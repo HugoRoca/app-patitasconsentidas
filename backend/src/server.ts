@@ -8,25 +8,17 @@ import compress from "./utils/compress";
 import notFavicon from "./utils/api-not-favicon";
 import apiError from "./utils/api-error";
 import routes from "./routes";
-import {
-  access as accessLogger,
-  error as errorLogger,
-} from "./utils/api-logger";
-import docs from "./utils/api-docs";
 
 const env = yenv();
 const PORT = env.PORT;
 const server = new Koa();
 
 server
-  .use(accessLogger)
-  .use(errorLogger)
   .use(helmet.contentSecurityPolicy(csp))
   .use(compress)
   .use(bodyParser())
   .use(notFavicon)
-  .use(apiError)
-  .use(docs);
+  .use(apiError);
 
 routes.map((x) => {
   server.use(x.routes()).use(x.allowedMethods());
