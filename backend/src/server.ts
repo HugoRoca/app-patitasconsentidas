@@ -21,7 +21,7 @@ server
   .use(apiError);
 
 routes.map((x) => {
-  server.use(x.routes()).use(x.allowedMethods());
+  // server.use(x.routes()).use(x.allowedMethods());
 });
 
 server.listen(PORT, "0.0.0.0", () =>
