@@ -32,11 +32,11 @@ module.exports = {
       state: {
         type: Sequelize.INTEGER
       },
-      createdAt: {
+      date_created: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      updatedAt: {
+      date_last_updated: {
         allowNull: false,
         type: Sequelize.DATE
       }
