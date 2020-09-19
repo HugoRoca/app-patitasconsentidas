@@ -1,52 +1,52 @@
-import { BaseContext } from "koa";
-import { HttpError } from "http-errors";
+import { BaseContext } from "koa"
+import { HttpError } from "http-errors"
 
 interface Params {
-  title: string;
-  detail: string;
-  instance: string;
+  title: string
+  detail: string
+  instance: string
 }
 
 interface ResponseError {
-  type: string;
-  title: string;
-  status: number;
-  detail: string;
-  instance: string;
+  type: string
+  title: string
+  status: number
+  detail: string
+  instance: string
 }
 
 const toResponse = (status: number, params?: Params) => {
-  const { title, detail, instance } = params || {};
+  const { title, detail, instance } = params || {}
   const response: ResponseError = {
     type: "about:blank",
     title: title || "",
     status,
     detail: detail || "",
     instance: instance || "",
-  };
+  }
 
-  return response;
-};
+  return response
+}
 
 export default class {
   static notFound(ctx: BaseContext) {
-    ctx.status = 404;
+    ctx.status = 404
     ctx.body = toResponse(ctx.status, {
       title: "Not Found",
       detail: "",
       instance: ctx.url,
-    });
-    return ctx.body;
+    })
+    return ctx.body
   }
 
   static internalServerError(ctx: BaseContext, err: HttpError & Error) {
-    ctx.status = err.statusCode || err.status || 500;
-    const errorSplit: any = err.stack?.split("\n");
+    ctx.status = err.statusCode || err.status || 500
+    const errorSplit: any = err.stack?.split("\n")
     ctx.body = toResponse(ctx.status, {
       title: err.message,
       detail: errorSplit[0],
       instance: ctx.url,
-    });
-    return ctx.body;
+    })
+    return ctx.body
   }
 }

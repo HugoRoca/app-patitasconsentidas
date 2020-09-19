@@ -1,13 +1,13 @@
-import { Context } from "koa";
-import ResponseError from "./response-error";
+import { Context } from "koa"
+import ResponseError from "./response-error"
 
 export default async (ctx: Context, next: () => Promise<any>) => {
   try {
-    await next();
+    await next()
     if (!ctx.body && (!ctx.status || ctx.status === 404)) {
-      return ResponseError.notFound(ctx);
+      return ResponseError.notFound(ctx)
     }
   } catch (err) {
-    return ResponseError.internalServerError(ctx, err);
+    return ResponseError.internalServerError(ctx, err)
   }
-};
+}

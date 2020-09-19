@@ -1,22 +1,24 @@
-import os from "os";
+/* eslint-disable filenames/match-regex */
+/* eslint-disable @typescript-eslint/camelcase */
+import os from "os"
 export interface LogEvent {
-  Date?: Date;
-  HostName?: any;
-  Trace?: any;
-  level: any;
-  className: any;
-  method: any;
-  parameters: any;
-  message: any;
-  elapsedTime: any;
-  country: any;
-  exception: any;
-  contentLength: 0;
-  remoteAddress: "";
-  source: "";
-  application: "";
-  codeTransaction: "";
-  application_id: "";
+  Date?: Date
+  HostName?: any
+  Trace?: any
+  level: any
+  className: any
+  method: any
+  parameters: any
+  message: any
+  elapsedTime: any
+  country: any
+  exception: any
+  contentLength: 0
+  remoteAddress: ""
+  source: ""
+  application: ""
+  codeTransaction: ""
+  application_id: ""
 }
 
 export const buildLogModel = (logEvent: LogEvent): LogEvent => {
@@ -38,5 +40,5 @@ export const buildLogModel = (logEvent: LogEvent): LogEvent => {
     application: logEvent.application,
     codeTransaction: logEvent.codeTransaction,
     application_id: logEvent.application_id,
-  };
-};
+  }
+}

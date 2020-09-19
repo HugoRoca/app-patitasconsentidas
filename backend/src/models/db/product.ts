@@ -1,15 +1,15 @@
 /* eslint-disable @typescript-eslint/camelcase */
-import { Model, DataTypes } from "sequelize";
+import { Model, DataTypes } from "sequelize"
 
 class Product extends Model {
-  product_code!: string;
-  name!: string;
-  description!: string;
-  image!: string;
-  type_unit: string;
-  quantity!: number;
-  sale_price!: number;
-  state!: number;
+  product_code!: string
+  name!: string
+  description!: string
+  image!: string
+  type_unit: string
+  quantity!: number
+  sale_price!: number
+  state!: number
 }
 
 export default (database: any) => {
@@ -50,5 +50,5 @@ export default (database: any) => {
       tableName: "Products",
       sequelize: database,
     }
-  );
-};
+  )
+}

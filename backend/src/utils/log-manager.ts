@@ -1,45 +1,45 @@
 /* eslint-disable @typescript-eslint/camelcase */
 /* eslint-disable no-unused-vars */
-import axios from "axios";
-import yenv from "yenv";
-import { LogEvent, buildLogModel } from "../models/logEvent.model";
-import log from "fancy-log";
-const env = yenv();
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+import axios from "axios"
+import yenv from "yenv"
+import { LogEvent, buildLogModel } from "../models/logEvent.model"
+import log from "fancy-log"
+const env = yenv()
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
 
 export default class {
-  indexName: string;
-  url: string;
+  indexName: string
+  url: string
 
   constructor() {
-    const today = new Date();
-    const dd: number = today.getDate();
-    const mm: number = today.getMonth() + 1;
-    const yyyy = today.getFullYear();
-    let day: string = dd.toString();
-    let mounth: string = mm.toString();
+    const today = new Date()
+    const dd: number = today.getDate()
+    const mm: number = today.getMonth() + 1
+    const yyyy = today.getFullYear()
+    let day: string = dd.toString()
+    let mounth: string = mm.toString()
 
     if (dd < 10) {
-      day = `0${dd}`;
+      day = `0${dd}`
     }
 
     if (mm < 10) {
-      mounth = `0${mm}`;
+      mounth = `0${mm}`
     }
 
-    const indexName = `${env.LOGGING.PATTERN}${yyyy}.${mounth}.${day}`;
-    this.indexName = indexName;
-    this.url = `${env.LOGGING.ENDPOINT}/${indexName}/${env.LOGGING.TYPE}`;
+    const indexName = `${env.LOGGING.PATTERN}${yyyy}.${mounth}.${day}`
+    this.indexName = indexName
+    this.url = `${env.LOGGING.ENDPOINT}/${indexName}/${env.LOGGING.TYPE}`
   }
 
   addLog(logEvent: LogEvent) {
     try {
-      logEvent.application = env.LOGGING.APPLICATION;
+      logEvent.application = env.LOGGING.APPLICATION
       axios.post(this.url, logEvent).catch(function (error) {
-        log.error(error);
-      });
+        log.error(error)
+      })
     } catch (error) {
-      log.error(error);
+      log.error(error)
     }
   }
 
@@ -53,10 +53,10 @@ export default class {
     codeTransaction?: any,
     application_id?: any
   ) {
-    let parametersString;
+    let parametersString
     if (typeof parameters === "object" && parameters !== null)
-      parametersString = JSON.stringify(parameters);
-    else parametersString = parameters;
+      parametersString = JSON.stringify(parameters)
+    else parametersString = parameters
 
     const logEvent: LogEvent = {
       level: "INFO",
@@ -73,8 +73,8 @@ export default class {
       application: "",
       codeTransaction: codeTransaction || "",
       application_id: application_id || "",
-    };
-    if (env.LOGGING.ENABLED_INFO === true) this.addLog(buildLogModel(logEvent));
+    }
+    if (env.LOGGING.ENABLED_INFO === true) this.addLog(buildLogModel(logEvent))
   }
 
   logError(
@@ -87,15 +87,15 @@ export default class {
     codeTransaction?: any,
     application_id?: any
   ) {
-    let parametersString;
+    let parametersString
     if (typeof parameters === "object" && parameters !== null)
-      parametersString = JSON.stringify(parameters);
-    else parametersString = parameters;
+      parametersString = JSON.stringify(parameters)
+    else parametersString = parameters
 
-    let exceptionString;
+    let exceptionString
     if (typeof exception === "object" && parameters !== null)
-      exceptionString = `${exception.name}: ${exception.message}`;
-    else exceptionString = exception;
+      exceptionString = `${exception.name}: ${exception.message}`
+    else exceptionString = exception
 
     const logEvent: LogEvent = {
       level: "ERROR",
@@ -112,9 +112,8 @@ export default class {
       application: "",
       codeTransaction: codeTransaction || "",
       application_id: application_id || "",
-    };
+    }
 
-    if (env.LOGGING.ENABLED_ERROR === true)
-      this.addLog(buildLogModel(logEvent));
+    if (env.LOGGING.ENABLED_ERROR === true) this.addLog(buildLogModel(logEvent))
   }
 }

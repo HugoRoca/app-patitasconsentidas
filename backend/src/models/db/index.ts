@@ -1,9 +1,9 @@
-import { Sequelize } from "sequelize";
-import product from "./product";
-import yenv from "yenv";
-const env = yenv();
+import { Sequelize } from "sequelize"
+import product from "./product"
+import yenv from "yenv"
+const env = yenv()
 
-let sequelize: any;
+let sequelize: any
 
 if (process.env.NODE_ENV === "production") {
   sequelize = new Sequelize(
@@ -24,7 +24,7 @@ if (process.env.NODE_ENV === "production") {
         updatedAt: "date_last_updated",
       },
     }
-  );
+  )
 } else {
   sequelize = new Sequelize(
     env.DATABASE.POSTGRES.DATABASE,
@@ -39,9 +39,9 @@ if (process.env.NODE_ENV === "production") {
         updatedAt: "date_last_updated",
       },
     }
-  );
+  )
 }
 
 export default {
   Product: product(sequelize),
-};
+}

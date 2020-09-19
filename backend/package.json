@@ -4,7 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "copyfiles": "cpy src/utils/*.yaml dist/utils/",
+    "clean": "rimraf .cache dist reports tmp",
+    "lint:code": "eslint --ext ts src/ -f stylish",
+    "lint:test": "eslint --ext ts test/ -f stylish",
+    "lint:report": "eslint --ext ts src/ -f html -o reports/lint.html",
+    "format": "prettier --write src/**/*.ts",
+    "format:fix": "eslint --ext ts src --fix",
+    "predevelop": "npm run clean && npm run lint:code && npm run copyfiles",
+    "develop": "nodemon ./src/server.ts",
+    "prebuild": "npm run clean && npm run lint:report",
+    "prestart": "npm run clean && npm run lint:report && npm run build && npm run copyfiles",
+    "start": "cross-env NODE_ENV=stage node ./dist/server.js",
+    "start:production": "cross-env NODE_ENV=production node ./dist/server.js"
   },
   "keywords": [],
   "author": "",

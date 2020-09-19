@@ -1,3 +1,3 @@
-import productRoute from "./routes/product.route";
+import productRoute from "./routes/product.route"
 
-export default [productRoute];
+export default [productRoute]
