@@ -20,9 +20,9 @@ server
   .use(notFavicon)
   .use(apiError);
 
-// routes.map((x) => {
-  // server.use(x.routes()).use(x.allowedMethods());
-// });
+routes.map((x) => {
+  server.use(x.routes()).use(x.allowedMethods());
+});
 
 server.listen(PORT, "0.0.0.0", () =>
   log.info(`server is running on PORT ${PORT}`)
