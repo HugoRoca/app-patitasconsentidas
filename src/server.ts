@@ -8,10 +8,13 @@ import compress from "./utils/compress"
 import notFavicon from "./utils/api-not-favicon"
 import apiError from "./utils/api-error"
 import routes from "./routes"
+import path from "path"
+import koaStatic from "koa-static"
 
 const env = yenv()
 const PORT = env.PORT
 const server = new Koa()
+const folderPublic = koaStatic(path.resolve(__dirname, "../public"))
 
 server
   .use(helmet.contentSecurityPolicy(csp))
@@ -19,6 +22,8 @@ server
   .use(bodyParser())
   .use(notFavicon)
   .use(apiError)
+
+server.use(folderPublic)
 
 routes.map((x) => {
   server.use(x.routes()).use(x.allowedMethods())
