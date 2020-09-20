@@ -15,36 +15,16 @@ class Product extends Model {
 export default (database: any) => {
   Product.init(
     {
-      product_code: {
-        type: DataTypes.STRING,
-      },
-      name: {
-        type: DataTypes.STRING,
-      },
-      description: {
-        type: DataTypes.STRING,
-      },
-      image: {
-        type: DataTypes.STRING,
-      },
-      type_unit: {
-        type: DataTypes.STRING,
-      },
-      quantity: {
-        type: DataTypes.NUMBER,
-      },
-      sale_price: {
-        type: DataTypes.NUMBER,
-      },
-      state: {
-        type: DataTypes.NUMBER,
-      },
-      date_created: {
-        type: DataTypes.DATE,
-      },
-      date_last_updated: {
-        type: DataTypes.DATE,
-      },
+      product_code: { type: DataTypes.STRING },
+      name: { type: DataTypes.STRING },
+      description: { type: DataTypes.STRING },
+      image: { type: DataTypes.STRING },
+      type_unit: { type: DataTypes.STRING },
+      quantity: { type: DataTypes.NUMBER },
+      sale_price: { type: DataTypes.NUMBER },
+      state: { type: DataTypes.NUMBER },
+      date_created: { type: DataTypes.DATE },
+      date_last_updated: { type: DataTypes.DATE },
     },
     {
       tableName: "Products",

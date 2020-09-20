@@ -1,5 +1,6 @@
 import { Sequelize } from "sequelize"
 import product from "./product"
+import user from "./user"
 import yenv from "yenv"
 const env = yenv()
 
@@ -44,4 +45,5 @@ if (process.env.NODE_ENV === "production") {
 
 export default {
   Product: product(sequelize),
+  User: user(sequelize),
 }

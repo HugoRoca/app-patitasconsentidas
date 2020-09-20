@@ -1,7 +1,7 @@
 import Router from "koa-router"
 import ProductController from "../controllers/product.controller"
 
-const router = new Router()
+const router = new Router({ prefix: "/products" })
 const controller = new ProductController()
 
 router.get("/ping", controller.ping)
