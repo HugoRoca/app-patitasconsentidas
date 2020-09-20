@@ -8,13 +8,13 @@ let sequelize: any
 
 if (process.env.NODE_ENV === "production") {
   sequelize = new Sequelize(
-    env.DATABASE.POSTGRES.DATABASE,
-    env.DATABASE.POSTGRES.USERNAME,
-    env.DATABASE.POSTGRES.PASSWORD,
+    env.DATABASE.MYSQL.DATABASE,
+    env.DATABASE.MYSQL.USERNAME,
+    env.DATABASE.MYSQL.PASSWORD,
     {
-      host: env.DATABASE.POSTGRES.HOST,
-      port: env.DATABASE.POSTGRES.PORT,
-      dialect: env.DATABASE.POSTGRES.DIALECT,
+      host: env.DATABASE.MYSQL.HOST,
+      port: env.DATABASE.MYSQL.PORT,
+      dialect: env.DATABASE.MYSQL.DIALECT,
       dialectOptions: {
         ssl: true,
         native: true,
@@ -28,12 +28,12 @@ if (process.env.NODE_ENV === "production") {
   )
 } else {
   sequelize = new Sequelize(
-    env.DATABASE.POSTGRES.DATABASE,
-    env.DATABASE.POSTGRES.USERNAME,
-    env.DATABASE.POSTGRES.PASSWORD,
+    env.DATABASE.MYSQL.DATABASE,
+    env.DATABASE.MYSQL.USERNAME,
+    env.DATABASE.MYSQL.PASSWORD,
     {
-      host: env.DATABASE.POSTGRES.HOST,
-      dialect: env.DATABASE.POSTGRES.DIALECT,
+      host: env.DATABASE.MYSQL.HOST,
+      dialect: env.DATABASE.MYSQL.DIALECT,
       logging: true,
       define: {
         createdAt: "date_created",

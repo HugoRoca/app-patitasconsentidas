@@ -31,4 +31,6 @@ export default (database: any) => {
       sequelize: database,
     }
   )
+
+  return Product
 }

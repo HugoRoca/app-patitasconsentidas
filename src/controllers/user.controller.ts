@@ -1,10 +1,11 @@
 import { Context } from "koa"
+import UserService from "../services/user.services"
+
+const userService = new UserService()
 
 class UserController {
-  async ping(ctx: Context) {
-    ctx.body = {
-      message: "OK",
-    }
+  async getAll(ctx: Context) {
+    ctx.body = await userService.getAll()
   }
 }
 

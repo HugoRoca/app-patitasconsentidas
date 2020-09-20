@@ -20,11 +20,11 @@ module.exports = {
       description: {
         type: Sequelize.STRING
       },
-      createdAt: {
+      date_created: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      updatedAt: {
+      date_last_updated: {
         allowNull: false,
         type: Sequelize.DATE
       }
