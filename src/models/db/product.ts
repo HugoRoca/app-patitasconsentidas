@@ -22,9 +22,9 @@ export default (database: any) => {
       type_unit: { type: DataTypes.STRING },
       quantity: { type: DataTypes.NUMBER },
       sale_price: { type: DataTypes.NUMBER },
-      state: { type: DataTypes.NUMBER },
-      date_created: { type: DataTypes.DATE },
-      date_last_updated: { type: DataTypes.DATE },
+      state: { type: DataTypes.NUMBER, defaultValue: true },
+      date_created: { type: DataTypes.DATE, defaultValue: new Date() },
+      date_last_updated: { type: DataTypes.DATE, defaultValue: new Date() },
     },
     {
       tableName: "Products",

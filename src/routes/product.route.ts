@@ -4,6 +4,6 @@ import ProductController from "../controllers/product.controller"
 const router = new Router({ prefix: "/products" })
 const controller = new ProductController()
 
-router.get("/ping", controller.ping)
+router.post("/", controller.create)
 
 export default router
