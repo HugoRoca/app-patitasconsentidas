@@ -1,13 +1,11 @@
 import Router from "koa-router"
-import compose from "koa-compose"
-import multer from "multer"
 import ProductController from "../controllers/product.controller"
-import { storage, fileFilter } from "../utils/helpers"
+import koaBody from "koa-body"
 
 const router = new Router({ prefix: "/products" })
 const controller = new ProductController()
-const upload = multer({ storage, fileFilter }).single("image")
+const image = koaBody({ multipart: true })
 
-router.post("/", upload, controller.create)
+router.post("/", image, controller.create)
 
 export default router

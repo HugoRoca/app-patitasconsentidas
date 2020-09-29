@@ -4,7 +4,7 @@ import UserService from "../services/user.services"
 const userService = new UserService()
 
 class UserController {
-  async getAll(ctx: Context) {
+  async getAll(ctx: Context): Promise<any> {
     ctx.body = await userService.getAll()
   }
 }
