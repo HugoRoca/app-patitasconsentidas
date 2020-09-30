@@ -6,12 +6,14 @@ import { Context } from "koa"
 // import mime from "mime-types"
 
 // const productService = new ProductService()
+import { uploadImg } from "../libs/upload"
 
 class ProductController {
   async create(ctx: Context) {
     console.log(ctx.request)
     console.log(ctx.request.body)
     console.log(ctx.request.files)
+    await uploadImg(ctx)
     const { path, name, type } = ctx.request.files || {}
     // const fileExtension = mime.extension(type)
     console.log(`path: ${path}`)

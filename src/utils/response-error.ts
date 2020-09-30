@@ -41,6 +41,7 @@ export default class {
 
   static internalServerError(ctx: BaseContext, err: HttpError & Error) {
     ctx.status = err.statusCode || err.status || 500
+    console.log(err.stack)
     const errorSplit: any = err.stack?.split("\n")
     ctx.body = toResponse(ctx.status, {
       title: err.message,
