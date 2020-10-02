@@ -27,15 +27,18 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       buy_price: {
-        type: Sequelize.DECIMAL
+        type: Sequelize.DOUBLE
       },
       sale_price: {
-        type: Sequelize.DECIMAL
+        type: Sequelize.DOUBLE
       },
       type_pet: {
         type: Sequelize.STRING
       },
       category: {
+        type: Sequelize.STRING
+      },
+      sub_category: {
         type: Sequelize.STRING
       },
       brand: {
@@ -50,8 +53,11 @@ module.exports = {
       type_product: {
         type: Sequelize.STRING
       },
+      in_offer: {
+        type: Sequelize.BOOLEAN
+      },
       state: {
-        type: Sequelize.INTEGER
+        type: Sequelize.BOOLEAN
       },
       date_created: {
         allowNull: false,

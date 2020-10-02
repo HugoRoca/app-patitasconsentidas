@@ -9,9 +9,11 @@ export interface Product {
   buy_price: number
   type_pet: string
   category: string
+  sub_category: string
   brand: string
   size: string
   color: string
   type_product: string
+  in_offer: boolean
   state?: boolean
 }

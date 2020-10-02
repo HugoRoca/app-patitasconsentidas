@@ -12,9 +12,11 @@ export default {
     buy_price: Joi.number().required(),
     type_pet: Joi.string(),
     category: Joi.string(),
+    sub_category: Joi.string(),
     brand: Joi.string(),
     size: Joi.string(),
     color: Joi.string(),
     type_product: Joi.string(),
+    in_offer: Joi.boolean().required(),
   }),
 }
