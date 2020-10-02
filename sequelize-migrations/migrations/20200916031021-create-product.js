@@ -26,8 +26,29 @@ module.exports = {
       quantity: {
         type: Sequelize.INTEGER
       },
+      buy_price: {
+        type: Sequelize.DECIMAL
+      },
       sale_price: {
         type: Sequelize.DECIMAL
+      },
+      type_pet: {
+        type: Sequelize.STRING
+      },
+      category: {
+        type: Sequelize.STRING
+      },
+      brand: {
+        type: Sequelize.STRING
+      },
+      size: {
+        type: Sequelize.STRING
+      },
+      color: {
+        type: Sequelize.STRING
+      },
+      type_product: {
+        type: Sequelize.STRING
       },
       state: {
         type: Sequelize.INTEGER
