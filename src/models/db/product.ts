@@ -20,7 +20,6 @@ export default (database: any) => {
       description: { type: DataTypes.STRING },
       image: { type: DataTypes.STRING },
       type_unit: { type: DataTypes.STRING },
-      quantity: { type: DataTypes.NUMBER },
       sale_price: { type: DataTypes.DOUBLE },
       buy_price: { type: DataTypes.DOUBLE },
       type_pet: { type: DataTypes.STRING },

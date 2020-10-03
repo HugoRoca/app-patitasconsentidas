@@ -23,9 +23,6 @@ module.exports = {
       type_unit: {
         type: Sequelize.STRING
       },
-      quantity: {
-        type: Sequelize.INTEGER
-      },
       buy_price: {
         type: Sequelize.DOUBLE
       },
