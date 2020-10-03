@@ -5,14 +5,26 @@ import ProductService from "../services/product.service"
 
 const productService = new ProductService()
 import { uploadImg } from "../libs/upload"
+import md5 from "blueimp-md5"
 
 class ProductController {
   async create(ctx: Context) {
     const file = ctx.request.files || {}
-    const { success, fileName, fileNameComplete } = await uploadImg(file.image)
 
-    if (!success) {
-      ctx.throw("Error when upload image")
+    let fileName
+    let fileNameComplete
+
+    if (Object.keys(file).length) {
+      const upload = await uploadImg(file.image)
+
+      if (!upload.success) {
+        ctx.throw("Error when upload image")
+      }
+
+      fileName = upload.fileName
+      fileNameComplete = upload.fileNameComplete
+    } else {
+      fileName = md5(`${new Date().getTime()}`)
     }
 
     const productModel: Product = {
