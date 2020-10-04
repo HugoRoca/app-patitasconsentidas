@@ -9,6 +9,10 @@ import md5 from "blueimp-md5"
 
 class ProductController {
   async create(ctx: Context) {
+    const findByName = await productService.getByName(ctx.request.body.name)
+
+    if (findByName) ctx.throw(400, "Product al ready exists")
+
     const file = ctx.request.files || {}
 
     let fileName

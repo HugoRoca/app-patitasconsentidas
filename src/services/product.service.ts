@@ -18,6 +18,10 @@ class ProductService {
     return { product, stock }
   }
 
+  async getByName(name: string) {
+    return await productRepository.getByName(name)
+  }
+
   async getAll() {
     return await productRepository.getAll()
   }

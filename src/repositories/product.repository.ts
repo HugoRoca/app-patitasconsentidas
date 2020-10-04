@@ -14,6 +14,10 @@ class ProductRepository {
   async getById(code: string) {
     return await db.Product.findOne<any>({ where: { product_code: code } })
   }
+
+  async getByName(name: string) {
+    return await db.Product.findOne<any>({ where: { name } })
+  }
 }
 
 export default ProductRepository
