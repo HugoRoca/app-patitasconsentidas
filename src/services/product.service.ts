@@ -14,8 +14,13 @@ class ProductService {
       product_code: body.product_code,
       quantity: body.quantity,
     }
-    const stock = await stockRepository.create(stockModel)
-    return { product, stock }
+
+    if (stockModel.quantity > 0) {
+      const stock = await stockRepository.create(stockModel)
+      return { product, stock }
+    }
+
+    return product
   }
 
   async getByName(name: string) {
